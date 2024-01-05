@@ -3,19 +3,21 @@ import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
 import HeaderSpacer from "./HeaderSpacer";
 import Aos from "aos";
+import Footer from "./Footer";
 
 const AppLayout = () => {
   useEffect(() => {
     Aos.init();
   }, []);
   return (
-    <>
-      <NavBar />
-      <HeaderSpacer />
-      <div className="min-h-screen bg-white">
+    <div className="min-h-screen flex gap-3 flex-col justify-between">
+      <div className="">
+        <NavBar />
+        <HeaderSpacer />
         <Outlet />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

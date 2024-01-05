@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        "dark-bg": "#5b281d",
         primary: "#5b281d",
         secondary: "#eee9e8",
+        btn: "#7d4739",
       },
       fontFamily: {
         padauk: ["Padauk", "ui-sans-serif"],

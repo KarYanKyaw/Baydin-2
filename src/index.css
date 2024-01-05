@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
+@import "animate.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swal2-loader {
+  border-color: #5b281d rgba(0, 0, 0, 0) #5b281d rgba(0, 0, 0, 0);
+}

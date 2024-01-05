@@ -1,12 +1,16 @@
-import AOS from "aos";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { useQuestions } from "../questions/QuestionContext";
 
 const InputUi = ({ open }) => {
-  const inputRef = useRef();
+  const { handleSearch, keyword, setKeyword } = useQuestions();
 
+  const inputRef = useRef(null);
   useEffect(() => {
     if (open && inputRef.current) {
       inputRef.current.focus();
+    }
+    if (!open && inputRef.current) {
+      setKeyword("");
     }
   }, [open]);
 
@@ -16,8 +20,10 @@ const InputUi = ({ open }) => {
       data-aos-easing={open ? "linear" : "ease-out"}
     >
       <input
+        value={keyword}
+        onChange={(e) => handleSearch(e)}
         ref={inputRef}
-        placeholder="ပညာရေးအကြောင်း"
+        placeholder="အချစ်ရေး"
         type="text"
         className=" outline-none focus:shadow-2xl shadow-lg px-4 text-secondary bg-primary w-full py-3"
       />

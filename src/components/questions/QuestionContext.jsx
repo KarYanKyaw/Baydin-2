@@ -6,17 +6,24 @@ const QuestionContext = createContext();
 export const QuestionContextProvider = ({ children }) => {
   const [allQuestions, setAllQuestions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [keyword, setKeyword] = useState("");
 
   const searchQuestion = (text) => {
     if (text.length > 3) {
       setAllQuestions(
-        questionsData.filter((el) =>
+        allQuestions.filter((el) =>
           el.questionName.toLowerCase().includes(text.toLowerCase())
         )
       );
     } else if (text.length === 0) {
       setAllQuestions(questionsData);
     }
+  };
+
+  const handleSearch = (e) => {
+    const searchText = e.target.value;
+    setKeyword(searchText);
+    searchQuestion(searchText);
   };
 
   const dataFetching = () => {
@@ -60,6 +67,11 @@ export const QuestionContextProvider = ({ children }) => {
     nextPage,
     prevPage,
     specificPage,
+    keyword,
+    handleSearch,
+    setKeyword,
+    allQuestions,
+    setAllQuestions,
   };
 
   return (

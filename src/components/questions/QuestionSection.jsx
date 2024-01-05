@@ -1,12 +1,20 @@
 import React from "react";
 import { useQuestions } from "./QuestionContext";
+import { Link } from "react-router-dom";
+import { questionsData } from "../../data";
 
-const QuestionsSection = () => {
-  const { questions } = useQuestions();
+const QuestionSection = () => {
+  const { setAllQuestions, questions, setKeyword } = useQuestions();
+  const handleClick = () => {
+    setKeyword("");
+    setAllQuestions(questionsData);
+  };
   return (
     <ul>
       {questions?.map(({ questionNo, questionName }) => (
-        <li
+        <Link
+          onClick={() => handleClick()}
+          to={`/question/${questionNo}`}
           className="select-none cursor-pointer hover:scale-[1.05] duration-500 mb-5 border p-3 flex bg-secondary gap-1 items-center"
           key={questionNo}
         >
@@ -16,10 +24,10 @@ const QuestionsSection = () => {
           <p className="text-primary text-sm md:text-lg font-bold">
             {questionName}
           </p>
-        </li>
+        </Link>
       ))}
     </ul>
   );
 };
 
-export default QuestionsSection;
+export default QuestionSection;

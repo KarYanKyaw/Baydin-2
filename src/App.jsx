@@ -6,20 +6,31 @@ import Answers from "./components/answers/Answers";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import NumberPage from "./components/questions/NumberPage";
+import ErrorPage from "./components/ui/ErrorPage";
 
 const routers = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
       },
       {
-        path: "answers",
+        path: "/question/:ques",
+        element: <NumberPage />,
+      },
+      {
+        path: "/question/:ques/answer/:num",
         element: <Answers />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
 
