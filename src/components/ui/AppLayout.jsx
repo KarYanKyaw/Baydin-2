@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import NavBar from "./NavBar";
 import HeaderSpacer from "./HeaderSpacer";
 import Aos from "aos";
@@ -15,6 +15,7 @@ const AppLayout = () => {
         <NavBar />
         <HeaderSpacer />
         <Outlet />
+        <ScrollRestoration />
       </div>
       <Footer />
     </div>
