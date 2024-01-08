@@ -2,17 +2,21 @@ import React from "react";
 import { useNumberContext } from "./NumberContext";
 import { useNavigate } from "react-router-dom";
 import { openSwal } from "../ui/createSwal";
+import { useQuestions } from "./QuestionContext";
 
 const NumberGrid = ({ id }) => {
   const { numberGridData } = useNumberContext();
+  const { handlePassed } = useQuestions();
 
   const navigate = useNavigate();
 
-  const handleClick = async (id, value) => {
+  const handleClick = (id, value) => {
+
     openSwal();
 
     setTimeout(() => {
       navigate(`/question/${parseInt(id)}/answer/${value}`);
+      handlePassed();
     }, 2100);
   };
 

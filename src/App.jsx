@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  Routes,
+  createBrowserRouter,
+} from "react-router-dom";
 import AppLayout from "./components/ui/AppLayout";
 import Home from "./components/questions/Home";
 import Answers from "./components/answers/Answers";
@@ -40,7 +45,17 @@ const App = () => {
   useEffect(() => {
     AOS.init();
   }, []);
-  return <RouterProvider router={routers} />;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route path="/" element={<Home />} exact />
+          <Route path="/question/:ques" element={<NumberPage />} />
+          <Route path="/question/:ques/answer/:num" element={<Answers />} />
+        </Route>
+      </Routes>
+    </>
+  );
 };
 
 export default App;

@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { questionsData } from "../../data";
 
 const QuestionSection = () => {
-  const { setAllQuestions, questions, setKeyword } = useQuestions();
+  const { setAllQuestions, questions, setKeyword, handlePassed } =
+    useQuestions();
   const handleClick = () => {
     setKeyword("");
     setAllQuestions(questionsData);
+    handlePassed();
   };
   return (
     <ul>
