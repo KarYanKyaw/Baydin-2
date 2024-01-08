@@ -45,17 +45,7 @@ const App = () => {
   useEffect(() => {
     AOS.init();
   }, []);
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route path="/" element={<Home />} exact />
-          <Route path="/question/:ques" element={<NumberPage />} />
-          <Route path="/question/:ques/answer/:num" element={<Answers />} />
-        </Route>
-      </Routes>
-    </>
-  );
+  return <RouterProvider router={routers} />;
 };
 
 export default App;

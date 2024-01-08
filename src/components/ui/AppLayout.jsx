@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import { Navigate, Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import NavBar from "./NavBar";
 import HeaderSpacer from "./HeaderSpacer";
 import Aos from "aos";
 import Footer from "./Footer";
-import { useQuestions } from "../questions/QuestionContext";
 
 const AppLayout = () => {
-  const { passed } = useQuestions();
   useEffect(() => {
     Aos.init();
   }, []);
@@ -17,6 +15,7 @@ const AppLayout = () => {
         <NavBar />
         <HeaderSpacer />
         <Outlet />
+        <ScrollRestoration />
       </div>
       <Footer />
     </div>

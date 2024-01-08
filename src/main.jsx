@@ -8,13 +8,11 @@ import { AnswerContextProvider } from "./components/answers/AnswerContext.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <QuestionContextProvider>
-      <NumberContextProvider>
-        <AnswerContextProvider>
-          <App />
-        </AnswerContextProvider>
-      </NumberContextProvider>
-    </QuestionContextProvider>
-  </BrowserRouter>
+  <QuestionContextProvider>
+    <NumberContextProvider>
+      <AnswerContextProvider>
+        <App />
+      </AnswerContextProvider>
+    </NumberContextProvider>
+  </QuestionContextProvider>
 );
