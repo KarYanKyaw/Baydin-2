@@ -8,6 +8,12 @@ export const QuestionContextProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [keyword, setKeyword] = useState("");
 
+  const [passed, setPassed] = useState(false);
+
+  const handlePassed = async () => {
+    setPassed(!passed);
+  };
+
   const searchQuestion = (text) => {
     if (text.length > 3) {
       setAllQuestions(
@@ -72,6 +78,8 @@ export const QuestionContextProvider = ({ children }) => {
     setKeyword,
     allQuestions,
     setAllQuestions,
+    handlePassed,
+    passed,
   };
 
   return (
